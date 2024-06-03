@@ -1,6 +1,5 @@
 package com.project.delicioso.configuration;
 
-import com.project.delicioso.services.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -42,7 +41,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         jwtToken = authHeader.substring(7); // 7 -> because 'B' 'e' 'a' 'r' 'e' 'r' ' ' = 7
         // try to extract the userEmail
         userEmail = jwtService.extractUserEmail(jwtToken); // extract the userEmail from JWT Token
-        //if userEmail is not null + user is not authentificated yet (no perform again all the checks and setting)
+        //if userEmail is not null + user is not authenticated yet (no perform again all the checks and setting)
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
             // validate and check if the token is still valid

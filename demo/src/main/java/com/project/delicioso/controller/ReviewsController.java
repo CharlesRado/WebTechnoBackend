@@ -10,7 +10,7 @@ import java.util.List;
 
 @AllArgsConstructor // permet de ne pas créer le constructeur
 @RestController //dit à java que c'est un controller
-@RequestMapping("api/v1/reviews") //définie le endpoint qui va définir la donnée
+@RequestMapping("/reviews") //définie le endpoint qui va définir la donnée
 public class ReviewsController {
 
     private ReviewService reviewService;

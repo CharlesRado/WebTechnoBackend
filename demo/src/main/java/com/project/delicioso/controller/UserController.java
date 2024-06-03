@@ -3,18 +3,21 @@ package com.project.delicioso.controller;
 import com.project.delicioso.entity.ChangePasswordRequest;
 import com.project.delicioso.entity.User;
 import com.project.delicioso.services.UserService;
+import jakarta.persistence.PrePersist;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor // permet de ne pas créer le constructeur
 @RestController //dit à java que c'est un controller
-@RequestMapping("api/v1/users") //définie le endpoint qui va définir la donnée
+@RequestMapping("/users") //définie le endpoint qui va définir la donnée
 public class UserController {
 
     private UserService userService;
@@ -52,7 +55,7 @@ public class UserController {
         return ResponseEntity.ok(currentUser);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<User>> allUsers() {
         List <User> users = userService.allUsers();
 

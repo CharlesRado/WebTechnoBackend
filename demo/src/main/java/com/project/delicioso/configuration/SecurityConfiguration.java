@@ -39,10 +39,13 @@ public class SecurityConfiguration {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/login").permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/restaurants/**", "/products/**").permitAll()
+                        .requestMatchers("/users/**", "/reviews/**", "/orders/**", "/deliveries/**").authenticated()
+                        .anyRequest().authenticated()
+                )
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                        .sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 

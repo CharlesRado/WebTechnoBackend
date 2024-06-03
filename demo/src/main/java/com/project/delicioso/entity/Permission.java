@@ -11,10 +11,10 @@ public enum Permission {
     USER_UPDATE("user:update"),
     USER_CREATE("user:create"),
     USER_DELETE("user:delete"),
-    DELEVERYMAN_READ("deleveryman:read"),
-    DELEVERYMAN_UPDATE("deleveryman:update"),
-    DELEVERYMAN_CREATE("deleveryman:create"),
-    DELEVERYMAN_DELETE("deleveryman:delete");
+    DELIVERYMAN_READ("deliveryman:read"),
+    DELIVERYMAN_UPDATE("deliveryman:update"),
+    DELIVERYMAN_CREATE("deliveryman:create"),
+    DELIVERYMAN_DELETE("deliveryman:delete");
 
     @Getter
     private final String permission;

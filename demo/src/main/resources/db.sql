@@ -63,6 +63,12 @@ INSERT INTO users (first_name, last_name, username, date_of_birth, email, passwo
 ('Renata', 'Tejeda Mercado', 'renatatejmer', '2002-11-30', 'retm63397@eleve.isep.fr', 'password789', 1, '128 Rue de Rivoli', '75001', NOW()),
 ('Émile', 'Durand', 'emiledurand', '2001-03-12', 'emile.durand@gmail.com', 'motdepasse765', 1, '10 Rue de la Paix', '75002', NOW());
 
+ALTER TABLE users DROP COLUMN role_id;
+DELETE FROM users WHERE email= 'charles.radolanirina@gmail.com';
+DELETE FROM users WHERE email= 'charles@gmail.com';
+DELETE FROM users WHERE email= 'giuliettapancari@gmail.com';
+DELETE FROM users WHERE email= 'retm63397@eleve.isep.fr';
+DELETE FROM users WHERE email= 'emile.durand@gmail.com';
 
 CREATE TABLE Products (
     product_id SERIAL PRIMARY KEY,
@@ -186,3 +192,12 @@ CREATE TABLE PaymentInfo (
 SELECT grantee, privilege_type
 FROM information_schema.role_table_grants
 WHERE table_name='restaurants';
+
+
+ALTER TABLE users DROP CONSTRAINT users_role_check;
+ALTER TABLE users ADD CONSTRAINT users_role_check CHECK (role IN ('USER', 'ADMIN', 'DELIVERYMAN'));
+SELECT * FROM users WHERE role NOT IN ('USER', 'ADMIN', 'DELIVERYMAN');
+UPDATE users SET role = 'USER' WHERE role NOT IN ('USER', 'ADMIN', 'DELIVERYMAN');
+DELETE FROM users WHERE role NOT IN ('USER', 'ADMIN', 'DELIVERYMAN');
+
+

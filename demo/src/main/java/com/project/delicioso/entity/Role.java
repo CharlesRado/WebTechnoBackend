@@ -31,6 +31,18 @@ public class Role {
 
 @RequiredArgsConstructor
 public enum Role {
+    ADMIN(
+            Set.of(
+                    USER_READ,
+                    USER_UPDATE,
+                    USER_CREATE,
+                    USER_DELETE,
+                    DELIVERYMAN_READ,
+                    DELIVERYMAN_UPDATE,
+                    DELIVERYMAN_CREATE,
+                    DELIVERYMAN_DELETE
+            )
+    ),
     USER(
             Set.of(
                     USER_READ,
@@ -39,12 +51,12 @@ public enum Role {
                     USER_DELETE
             )
     ),
-    DELEVERYMAN(
+    DELIVERYMAN(
             Set.of(
-                    DELEVERYMAN_READ,
-                    DELEVERYMAN_UPDATE,
-                    DELEVERYMAN_CREATE,
-                    DELEVERYMAN_DELETE
+                    DELIVERYMAN_READ,
+                    DELIVERYMAN_UPDATE,
+                    DELIVERYMAN_CREATE,
+                    DELIVERYMAN_DELETE
             )
     )
     ;

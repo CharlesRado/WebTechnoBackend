@@ -61,6 +61,7 @@ public class UserService {
         return users;
     }
 
+
     /*
     public String getRoleName(Long userId) { // Method to retrieve the role name of a user by his id
         // Récupérer l'utilisateur et retourner le nom du rôle associé
